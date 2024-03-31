@@ -1,14 +1,44 @@
-# Welcome to your CDK TypeScript project
+cdk-log-aggregator
+==================
 
-This is a blank project for CDK development with TypeScript.
+Sample CDK application that configures the access log collection system on AWS.
 
-The `cdk.json` file tells the CDK Toolkit how to execute your app.
+Diagram
+-------
 
-## Useful commands
+![diagram](docs/diagram.png)
 
-* `npm run build`   compile typescript to js
-* `npm run watch`   watch for changes and compile
-* `npm run test`    perform the jest unit tests
-* `npx cdk deploy`  deploy this stack to your default AWS account/region
-* `npx cdk diff`    compare deployed stack with current state
-* `npx cdk synth`   emits the synthesized CloudFormation template
+Supported
+---------
+
+- CloudFront
+- ALB
+- NLB
+- EC2 (httpd logs via td-agent)
+
+Prerequisites
+-------------
+
+First, define the context as follows:
+
+```json
+{
+  ...
+  "context": {
+    ...
+    "owner": "user",
+    "serviceName": "myapp",
+    "hostedZoneName": "your-domain.com"
+  }
+}
+```
+
+Usage
+-----
+
+Deploy resources with the following command:
+
+```sh
+npx cdk synth
+npx cdk deploy
+```
